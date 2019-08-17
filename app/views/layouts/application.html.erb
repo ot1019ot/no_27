@@ -4,12 +4,77 @@
     <title>No27</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta charset="utf-8">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+
+  <body style="background-color: black; color: white; ">
+
+    <header>
+      <nav class="navbar navbar-inverse" style="height: 130px; padding: 0 80px; margin: 0;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/"><h1>NO.27</h1><h6>VIPカー愛好家集合!</h6></a>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right" style="padding: 40px;">
+
+            <li font><%= link_to " ABOUT", abouts_index_path %></li>
+            <li><%= link_to " EVENT", events_index_path %></li>
+
+            <% if user_signed_in? %>
+
+              <li><%= link_to "MY PAGE", user_path(current_user.id) %></a></li>
+              <li><%= link_to " LOGOUT", destroy_user_session_path, method: :delete %>
+
+            <% else %>
+
+              <li><%= link_to " SIGNUP", new_user_registration_path %></li>
+              <li><%= link_to " LOGIN", new_user_session_path %></li>
+
+            <% end %>
+
+          </ul>
+
+        </div>
+      </nav>
+    </header>
+
+
+    <% if flash[:notice] %>
+      <div class="container">
+        <div class="row">
+          <div class="alert alert-success" role="alert">
+            <div class="flash">
+              <%= flash[:notice] %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
     <%= yield %>
+
+
+    <footer>
+      <nav class="navbar navbar-inverse" style="padding: 0 80px; width: 100%;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/"><h2>NO.27</h2><h6>VIPカー愛好家集合!</h6></a>
+          </div>
+          <div class="nav navbar-nav navbar-right" style="padding: 20px 0; color: #A9A9A9;">
+            <h6>注意事項</h6>
+            <p>当サイトの画像の無断転載は禁止されております。当サイトを通して起きた問題は各ユーザー個人責任でお願い致します。<br>
+                盗難車を発見された場合は直ちに警察に通報をお願い致します。<br>
+                人物、団体もしくは第三者への抽象的て表現は一切禁止しております。発見次第アカウント停止させていただきます。
+            </p>
+          </div>
+        </div>
+      </nav>
+    </footer>
+
   </body>
 </html>

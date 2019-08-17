@@ -1,0 +1,81 @@
+<div class="container" style="margin: 40px auto;">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="car-image">
+				<%= attachment_image_tag @car, :image, :fill, 500, 380, format: 'jpeg', :class => "img-responsive good.photo", :style => "margin: 0 auto;" %>
+			</div>
+			<div class="car-info col-sm-12" style=" text-align: center;">
+				<h3><%= @car.car_year.car_year %> <%= @car.manufacture.manufacture %> <%= @car.car_model.car_model %></h3>
+				<%= link_to user_path(@car.user.id),:style=>"color: white;" do %>
+					<h4><%= @car.user.name %></h4>
+				<% end %>
+				<h4><%= @car.user.area %></h4>
+				<p><%= @car.introduction %></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="favorite container" style="margin-bottom: 10px;">
+	<div class="row">
+		<div class="col-sm-6">
+
+			<% if user_signed_in? && @car.favorited_by?(current_user) %>
+				<%= link_to car_favorites_path(@car), :style=>"color: white;", method: :delete do %>
+			      <div class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></div>
+			      <%= @car.favorites.count %> いいね
+			    <% end %>
+			<% elsif user_signed_in? %>
+			    <%= link_to car_favorites_path(@car), :style=>"color: white;", method: :post do %>
+			      <div class="glyphicon glyphicon-heart" aria-hidden="true" style="color: white;"></div>
+			      <%= @car.favorites.count %> いいね
+			    <% end %>
+			<% else %>
+				<div class="glyphicon glyphicon-heart" aria-hidden="true" style="color: white;"></div>
+			      <%= @car.favorites.count %> いいね
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<% if user_signed_in? %>
+	<div class="container comment-form" style="text-align: center;">
+		<%= form_for [@car, @comment] do |f| %>
+		    <div class="row">
+		    	<div class="form-group">
+				<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+				<%= f.submit "コメントする", :class => "btn btn-info", :style => "margin: 20px auto;" %>
+				</div>
+		    </div>
+		<% end %>
+	</div>
+<% end %>
+
+
+<div class="comments" style=" margin-bottom: 20px;">
+	<% @car.comments.each do |car_comment| %>
+		<div class="container">
+		    <div class="row">
+		        <div class="col-md-8">
+		            <div class="comments-list">
+		                <div class="media">
+		                    <p class="pull-right"><small><%= car_comment.created_at.strftime('%Y/%m/%d') %></small></p>
+		                        <div class="media-body">
+		                        	<%= link_to user_path(car_comment.user.id), :style=>"color: white;" do %>
+		                            	<h5 class="media-heading user_name"><%= car_comment.user.name %></h5>
+		                            <% end %>
+		                            <p><%= car_comment.comment %></p>
+		                        </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	<% end %>
+</div>
+
+
+
+
+
+

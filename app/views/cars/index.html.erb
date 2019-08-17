@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="cars-index-title" style="text-align: center; margin-bottom: 40px;">
+			<h1>新規登録車両</h1>
+		</div>
+
+		<% @cars.each do |car| %>
+			<%= link_to car_path(car.id) do %>
+				<ul class="list-group col-lg-3" style="width: 230px; color: black; text-align: center;">
+					<li class="list-group-item"><%= attachment_image_tag car, :image, class: "profile-thumb", size: "180x180" %></li>
+					<li class="list-group-item"><%= car.car_year.car_year %> <%= car.manufacture.manufacture %> <%= car.car_model.car_model %></li>
+					<li class="list-group-item"><%= car.user.name %></li>
+					<li class="list-group-item"><%= car.user.area %></li>
+				</ul>
+			<% end %>
+		<% end %>
+
+	</div>
+</div>
+
+
+
+

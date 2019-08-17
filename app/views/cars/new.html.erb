@@ -1,0 +1,40 @@
+<div class="container new-car" style="margin: 60px auto; text-align: center;">
+	<div class="row">
+		<h2>愛車を追加</h2>
+
+		<%= form_for(@car, url:cars_path) do |f| %>
+
+
+			<div class="field">
+		      <%= f.label :メーカー %><br />
+		      <%= f.collection_select :manufacture_id, Manufacture.all, :id, :manufacture %>
+		    </div>
+
+		    <div class="field">
+		      <%= f.label :車種 %><br />
+		      <%= f.collection_select :car_model_id, CarModel.all, :id, :car_model %>
+		    </div>
+
+		    <div class="field">
+		      <%= f.label :年式 %><br />
+		      <%= f.collection_select :car_year_id, CarYear.all, :id, :car_year %>
+		    </div>
+
+		    <div class="field">
+		      <%= f.label :画像 %><br />
+		      <%= f.attachment_field :image,:style => "margin: 0 auto; color: white;"%>
+		    </div>
+
+		    <div class="field">
+		      <%= f.label :紹介文 %><br />
+		      <%= f.text_area :introduction, :style => "height: 240px; width: 460px;"%>
+		    </div>
+
+		    <div class="field" style="margin-top: 10px;">
+		    	<%= f.submit "愛車を登録", :class => "btn btn-info"%>
+		    </div>
+
+
+		<% end %>
+	</div>
+</div>

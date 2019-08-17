@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  manufacture_id: 1
+  model_id: 1
+  year_id: 1
+  favorite_id: 1
+  comments_id: 1
+  image_id: MyText
+  introduction: MyText
+
+two:
+  user_id: 1
+  manufacture_id: 1
+  model_id: 1
+  year_id: 1
+  favorite_id: 1
+  comments_id: 1
+  image_id: MyText
+  introduction: MyText

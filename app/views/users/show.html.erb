@@ -1,24 +1,28 @@
 <div class="car-show container">
 	<div class="row" style="text-align: center;">
 
-		<h2 style="margin: 40px 0"><%= @user.name %>さんの部屋</h2>
+		<h2 style="margin-top: 40px;"><%= @user.name %>さんの部屋</h2>
+		<h3><%= @user.area %></h3>
 
-		<div class="user-cars clearfix" style="margin: 40px 0;">
+		<div class="user-cars clearfix">
 			<% @user.cars.each do |uc| %>
-				<ul class="list-group col-lg-3" style="width: 230px; color: black; text-align: center;">
-					<li class="list-group-item"><%= attachment_image_tag uc, :image, class: "profile-thumb", size: "180x180" %></li>
-					<li class="list-group-item"><%= uc.car_year.car_year %> <%= uc.manufacture.manufacture %> <%= uc.car_model.car_model %></li>
-					<% if @user.id == current_user.id %>
-						<li class="list-group-item"><%= link_to "愛車を編集", edit_car_path(uc.id) %></li>
-					<% end %>
-				</ul>
+				<%= link_to car_path(uc.id) do %>
+					<ul class="list-group col-lg-3" style="width: 230px; text-align: center;">
+						<li class="list-group-item"><%= attachment_image_tag uc, :image, class: "profile-thumb", size: "180x180" %></li>
+						<li class="list-group-item" style="color: black;"><%= uc.car_year.car_year %> <%= uc.manufacture.manufacture %> <%= uc.car_model.car_model %></li>
+						<% if user_signed_in? && @user.id == current_user.id %>
+							<li><button class="btn btn-info" style="margin-top: 10px;"><%= link_to "愛車を編集", edit_car_path(uc.id), :style=>"color: white;"%></button></li>
+						<% end %>
+					</ul>
+				<% end %>
 			<% end %>
 		</div>
 
-		<% if @user.id == current_user.id %>
+
+		<% if user_signed_in? && @user.id == current_user.id %>
 			<div class="user-links" style="margin: 40px 0">
-				<%= link_to "登録情報編集", edit_user_path%>
-				<%= link_to "愛車を追加", new_car_path%>
+				<%= link_to "登録情報編集", edit_user_path, :class=>"btn btn-info" %>
+				<%= link_to "愛車を追加", new_car_path, :class=>"btn btn-info" %>
 			</div>
 		<% end %>
 	</div>

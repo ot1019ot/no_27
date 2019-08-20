@@ -13,7 +13,7 @@
   <body style="background-color: black; color: white; ">
 
     <header>
-      <nav class="navbar navbar-inverse" style="height: 130px; padding: 0 80px; margin: 0;">
+      <nav class="navbar navbar-inverse" style="height: 140px; padding: 0 80px; margin: 0;">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="/"><h1>NO.27</h1><h6>VIPカー愛好家集合!</h6></a>
@@ -21,7 +21,7 @@
 
           <ul class="nav navbar-nav navbar-right" style="padding: 40px;">
 
-            <li font><%= link_to " ABOUT", abouts_index_path %></li>
+            <li><%= link_to " ABOUT", abouts_index_path %></li>
             <li><%= link_to " EVENT", events_index_path %></li>
 
             <% if user_signed_in? %>

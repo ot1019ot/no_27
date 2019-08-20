@@ -13,6 +13,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to car_path(id: @comment.car_id)
+    end
   end
 
   private

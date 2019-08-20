@@ -1,7 +1,11 @@
 class CarsController < ApplicationController
 
   def index
-    @cars = Car.order(created_at: :desc).limit(5)
+    @search = Car.ransack(params[:q])
+    @cars = @search.result(distinct: true).order('created_at DESC')
+    @manufactures = Manufacture.all
+    @car_models = CarModel.all
+    @car_years = CarYear.all
   end
 
   def new
@@ -43,7 +47,8 @@ class CarsController < ApplicationController
 
   end
 
-  def search
+  def set_search
+
   end
 
   private

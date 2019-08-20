@@ -8,7 +8,7 @@
 
 Manufacture.create(
 	[
-		{manufacture: "未選択"},{manufacture: "トヨタ"},{manufacture: "日産"},{manufacture: "レクサス"},
+		{manufacture: "トヨタ"},{manufacture: "日産"},{manufacture: "レクサス"},
 		{manufacture: "インフィニティ"},{manufacture: "ホンダ"},{manufacture: "アキュラ"},{manufacture: "マツダ"},
 		{manufacture: "メルセデス"},{manufacture: "BMW"},{manufacture: "ポルシェ"},{manufacture: "ロールスロイス"},
 		{manufacture: "ジャガー"},{manufacture: "ベントレー"},{manufacture: "クライスラー"},{manufacture: "キャデラック"},{manufacture: "その他"}
@@ -17,7 +17,7 @@ Manufacture.create(
 
 CarModel.create(
 	[
-		{car_model: "未選択"},{car_model: "セルシオ"},{car_model: "クラウン"},{car_model: "マジェスタ"},{car_model: "アリスト"},{car_model: "センチュリー"},{car_model: "ソアラ"},{car_model: "マークII"},{car_model: "チェイサー"},
+		{car_model: "セルシオ"},{car_model: "クラウン"},{car_model: "マジェスタ"},{car_model: "アリスト"},{car_model: "センチュリー"},{car_model: "ソアラ"},{car_model: "マークII"},{car_model: "チェイサー"},
 		{car_model: "シーマ"},{car_model: "セドリック"},{car_model: "グロリア"},{car_model: "フーガ"},{car_model: "ローレル"},
 		{car_model: "LS"},{car_model: "GS"},{car_model: "IS"},{car_model: "LC"},
 		{car_model: "Q45"},{car_model: "M45"},{car_model: "M37"},{car_model: "M57"},{car_model: "Q70"},

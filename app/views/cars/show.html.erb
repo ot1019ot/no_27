@@ -4,13 +4,17 @@
 			<div class="car-image">
 				<%= attachment_image_tag @car, :image, :fill, 500, 380, format: 'jpeg', :class => "img-responsive good.photo", :style => "margin: 0 auto;" %>
 			</div>
-			<div class="car-info col-sm-12" style=" text-align: center;">
-				<h3><%= @car.car_year.car_year %> <%= @car.manufacture.manufacture %> <%= @car.car_model.car_model %></h3>
-				<%= link_to user_path(@car.user.id),:style=>"color: white;" do %>
-					<h4><%= @car.user.name %></h4>
-				<% end %>
-				<h4><%= @car.user.area %></h4>
-				<p><%= @car.introduction %></p>
+			<div class="col-sm-12">
+				<div class="car-info" style="text-align: center;">
+					<h3><%= @car.car_year.car_year %> <%= @car.manufacture.manufacture %> <%= @car.car_model.car_model %></h3>
+					<%= link_to user_path(@car.user.id),:style=>"color: white;" do %>
+						<h4><%= @car.user.name %></h4>
+					<% end %>
+					<h4><%= @car.user.area %></h4>
+				</div>
+				<div class="car-text">
+					<p><%= simple_format(@car.introduction)%></p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -57,7 +61,7 @@
 		<div class="container">
 		    <div class="row">
 		        <div class="col-md-8">
-		            <div class="comments-list">
+		            <div class="comments-list" style="margin: 10px 0;">
 		                <div class="media">
 		                    <p class="pull-right"><small><%= car_comment.created_at.strftime('%Y/%m/%d') %></small></p>
 		                        <div class="media-body">
@@ -65,6 +69,9 @@
 		                            	<h5 class="media-heading user_name"><%= car_comment.user.name %></h5>
 		                            <% end %>
 		                            <p><%= car_comment.comment %></p>
+		                            	<% if car_comment.user == current_user %>
+		                            		<button class="btn btn-danger" style="padding: 0px 10px;"><small><%= link_to "削除", car_comments_path(id: car_comment, car_id: @car), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？", :style=>"color: white;" %></small></button>
+		                            	<% end %>
 		                        </div>
 		                </div>
 		            </div>

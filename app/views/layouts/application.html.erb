@@ -15,19 +15,19 @@
     <header>
       <nav class="navbar navbar-inverse" style="height: 140px; padding: 0 80px; margin: 0;">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/"><h1>NO.27</h1><h6>VIPカー愛好家集合!</h6></a>
+          <div class="navbar-header" style="padding-top: 10px;">
+            <a class="navbar-brand" href="/"><img src="https://images.cooltext.com/5320073.png" width="202" height="77" alt="No.27" /></a>
           </div>
 
           <ul class="nav navbar-nav navbar-right" style="padding: 40px;">
 
             <li><%= link_to " ABOUT", abouts_index_path %></li>
-            <li><%= link_to " EVENT", events_index_path %></li>
+            <li><%= link_to " EVENT", events_path %></li>
 
             <% if user_signed_in? %>
 
-              <li><%= link_to "MY PAGE", user_path(current_user.id) %></a></li>
-              <li><%= link_to " LOGOUT", destroy_user_session_path, method: :delete %>
+              <li><%= link_to "MY PAGE", user_path(current_user.id) %></li>
+              <li><%= link_to " LOGOUT", destroy_user_session_path, method: :delete %></li>
 
             <% else %>
 
@@ -36,12 +36,14 @@
 
             <% end %>
 
-          </ul>
+            <% if admin_signed_in? %>
+              <li><%= link_to " ADMIN", admins_path %></li>
+            <% end %>
 
+          </ul>
         </div>
       </nav>
     </header>
-
 
     <% if flash[:notice] %>
       <div class="container">
@@ -53,8 +55,7 @@
           </div>
         </div>
       </div>
-    <% end %>
-
+     <% end %>
 
     <%= yield %>
 
@@ -62,8 +63,8 @@
     <footer>
       <nav class="navbar navbar-inverse" style="padding: 0 80px; width: 100%;">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/"><h2>NO.27</h2><h6>VIPカー愛好家集合!</h6></a>
+          <div class="navbar-header" style="padding-top: 10px;">
+            <a class="navbar-brand" href="/"><img src="https://images.cooltext.com/5320073.png" width="202" height="77" alt="No.27" /></a>
           </div>
           <div class="nav navbar-nav navbar-right" style="padding: 20px 0; color: #A9A9A9;">
             <h6>注意事項</h6>

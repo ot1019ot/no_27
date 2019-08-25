@@ -1,2 +1,33 @@
-<h1>Event#index</h1>
-<p>Find me in app/views/event/index.html.erb</p>
+<div class="event container">
+	<div class="row">
+
+		<h3 style="padding: 10px 0 ; text-align: center;">イベント一覧</h3>
+		<table class="table col-md-12 col-xs-12">
+			<thead>
+				<tr>
+					<th>イベント名</th>
+					<th>場所</th>
+					<th>日付</th>
+					<% if admin_signed_in? %>
+						<th>編集</th>
+					<% end %>
+					</if>
+				</tr>
+			</thead>
+			<tbody>
+				<% @events.each do |event| %>
+					<tr>
+						<td><%= event.event_name %></td>
+						<td><%= event.event_address %></td>
+						<td><%= event.event_date%></td>
+						<% if admin_signed_in? %>
+							<td><%= link_to "編集", edit_event_path(event),:class => "btn btn-info"%></td>
+						<% end %>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+

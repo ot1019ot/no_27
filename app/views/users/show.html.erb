@@ -19,7 +19,7 @@
 		</div>
 
 
-		<% if user_signed_in? && @user.id == current_user.id %>
+		<% if user_signed_in? && @user.id == current_user.id or admin_signed_in?%>
 			<div class="user-links" style="margin: 40px 0">
 				<%= link_to "登録情報編集", edit_user_path, :class=>"btn btn-info" %>
 				<%= link_to "愛車を追加", new_car_path, :class=>"btn btn-info" %>

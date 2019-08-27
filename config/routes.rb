@@ -28,8 +28,6 @@ Rails.application.routes.draw do
 
   post 'cars/create' => 'cars#create'
 
-  get 'cars/search' => 'cars#set_search'
-
   post 'car_years/create' => 'car_years#create'
   post 'car_years/update' => 'car_years#update'
 

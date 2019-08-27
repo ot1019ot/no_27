@@ -45,18 +45,6 @@
       </nav>
     </header>
 
-    <% if flash[:notice] %>
-      <div class="container">
-        <div class="row">
-          <div class="alert alert-success" role="alert">
-            <div class="flash">
-              <%= flash[:notice] %>
-            </div>
-          </div>
-        </div>
-      </div>
-     <% end %>
-
     <%= yield %>
 
 

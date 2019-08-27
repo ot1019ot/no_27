@@ -1,8 +1,8 @@
 <div class="container new-car" style="margin: 60px auto; text-align: center;">
 	<div class="row">
-		<h2>イベントを追加</h2>
+		<h2>イベントを編集</h2>
 
-		<%= form_for(@event, url:events_path) do |f| %>
+		<%= form_for(@event) do |f| %>
 
 
 			<div class="field">
@@ -21,7 +21,7 @@
 		    </div>
 
 		    <div class="field" style="margin-top: 10px;">
-		    	<%= f.submit "登録", :class => "btn btn-info"%>
+		    	<%= f.submit "編集", :class => "btn btn-info"%>
 		    	<%= link_to "削除", event_path(@event), method: :delete, :class => "btn btn-danger"%>
 		    </div>
 

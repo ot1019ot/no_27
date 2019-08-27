@@ -1,8 +1,21 @@
 <div class="container" style="width: 100%;">
 	<div class="row">
 
-		<div class="main-visual" style="background-image:url(<%= asset_path "index.JPG" %>)">
+		<div class="main-visual" style="background-image:url(<%= asset_path "/images/index.JPG" %>)">
 			<div class="search-box" style="text-align: center; height: 500px;">
+
+				<% if flash[:notice] %>
+      				<div class="container">
+        				<div class="row">
+          					<div class="alert alert-success" role="alert">
+            					<div class="flash">
+              						<%= flash[:notice] %>
+            					</div>
+          					</div>
+        				</div>
+      				</div>
+     			<% end %>
+
 				<h2 style="margin: 0; padding: 20px 0;">VIPカー愛好家の集い</h2>
 	            <%= search_form_for @search do |f| %>
 	            	<div class="search-form">
@@ -36,8 +49,8 @@
 	    	<div class="row">
 				<% @cars.each do |car| %>
 					<%= link_to car_path(car.id) do %>
-						<ul class="list-group col-sm-6 center-block" style="width: 230px; color: black; text-align: center;">
-							<li class="list-group-item"><%= attachment_image_tag car, :image, class: "profile-thumb", size: "180x180" %></li>
+						<ul class="list-group col-sm-6 center-block" style="width: 50%; color: black; text-align: center;">
+							<li class="list-group-item"><%= attachment_image_tag car, :image, class: "profile-thumb", size: "540x400" %></li>
 							<li class="list-group-item"><%= car.car_year.car_year %> <%= car.manufacture.manufacture %> <%= car.car_model.car_model %></li>
 							<li class="list-group-item"><%= car.user.name %></li>
 							<li class="list-group-item"><%= car.user.area %></li>

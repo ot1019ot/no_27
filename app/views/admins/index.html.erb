@@ -1,6 +1,18 @@
 <div class="admin-top container">
 	<div class="row">
 
+		<% if flash[:notice] %>
+      		<div class="container">
+        		<div class="row">
+          			<div class="alert alert-success" role="alert">
+            			<div class="flash">
+              				<%= flash[:notice] %>
+            			</div>
+          			</div>
+        		</div>
+      		</div>
+     	<% end %>
+
 		<h3 style="text-align: center; padding: 20px 0;">管理者メニュー</h3>
 
 		<h4 style="padding: 10px 0 ;">ユーザー一覧</h4>

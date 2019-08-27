@@ -1,19 +1,33 @@
 <div class="car-show container">
 	<div class="row" style="text-align: center;">
 
+		<% if flash[:notice] %>
+      		<div class="container">
+        		<div class="row">
+          			<div class="alert alert-success" role="alert">
+            			<div class="flash">
+              				<%= flash[:notice] %>
+            			</div>
+          			</div>
+        		</div>
+      		</div>
+    	 <% end %>
+
 		<h2 style="margin-top: 40px;"><%= @user.name %>さんの部屋</h2>
 		<h3><%= @user.area %></h3>
 
 		<div class="user-cars clearfix">
 			<% @user.cars.each do |uc| %>
 				<%= link_to car_path(uc.id) do %>
-					<ul class="list-group col-lg-3" style="width: 230px; text-align: center;">
-						<li class="list-group-item"><%= attachment_image_tag uc, :image, class: "profile-thumb", size: "180x180" %></li>
-						<li class="list-group-item" style="color: black;"><%= uc.car_year.car_year %> <%= uc.manufacture.manufacture %> <%= uc.car_model.car_model %></li>
-						<% if user_signed_in? && @user.id == current_user.id %>
-							<li><button class="btn btn-info" style="margin-top: 10px;"><%= link_to "愛車を編集", edit_car_path(uc.id), :style=>"color: white;"%></button></li>
-						<% end %>
-					</ul>
+					<div class="user-car" style="float: right; position: relative; left: -50%; text-align: left;">
+						<ul class="list-group col-sm-3" style="width: 100%; text-align: center; position: relative; left: 50%;">
+							<li class="list-group-item"><%= attachment_image_tag uc, :image, class: "profile-thumb", size: "540x400" %></li>
+							<li class="list-group-item" style="color: black;"><%= uc.car_year.car_year %> <%= uc.manufacture.manufacture %> <%= uc.car_model.car_model %></li>
+							<% if user_signed_in? && @user.id == current_user.id %>
+								<li><button class="btn btn-info" style="margin-top: 10px;"><%= link_to "愛車を編集", edit_car_path(uc.id), :style=>"color: white;"%></button></li>
+							<% end %>
+						</ul>
+					</div>
 				<% end %>
 			<% end %>
 		</div>
@@ -21,8 +35,8 @@
 
 		<% if user_signed_in? && @user.id == current_user.id or admin_signed_in?%>
 			<div class="user-links" style="margin: 40px 0">
-				<%= link_to "登録情報編集", edit_user_path, :class=>"btn btn-info" %>
-				<%= link_to "愛車を追加", new_car_path, :class=>"btn btn-info" %>
+				<%= link_to "情報編集", edit_user_path, :class=>"btn btn-info" %>
+				<%= link_to "愛車追加", new_car_path, :class=>"btn btn-info" %>
 			</div>
 		<% end %>
 	</div>

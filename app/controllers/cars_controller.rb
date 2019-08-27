@@ -33,7 +33,7 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
     @car.destroy
     flash[:notice] = "愛車を削除しました。"
-    redirect_to user_path
+    redirect_to user_path(current_user.id)
   end
 
   def edit
